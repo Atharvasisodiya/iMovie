@@ -1,0 +1,32 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Layout from './components/Layout'
+import { BookingProvider } from './context/BookingContext'
+import Checkout from './pages/Checkout'
+import Confirmation from './pages/Confirmation'
+import Home from './pages/Home'
+import MovieDetails from './pages/MovieDetails'
+import Movies from './pages/Movies'
+import MyBookings from './pages/MyBookings'
+import SeatSelection from './pages/SeatSelection'
+
+function App() {
+  return (
+    <BrowserRouter>
+      <BookingProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movies/:id" element={<MovieDetails />} />
+            <Route path="/book/:id/seats" element={<SeatSelection />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/confirmation/:bookingId" element={<Confirmation />} />
+            <Route path="/bookings" element={<MyBookings />} />
+          </Route>
+        </Routes>
+      </BookingProvider>
+    </BrowserRouter>
+  )
+}
+
+export default App
